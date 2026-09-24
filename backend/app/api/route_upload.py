@@ -37,15 +37,7 @@ async def upload_document(postfile: UploadFile = File(...)):
         
         with open(save_path, "wb") as f:
             f.write(content)
-        
-        documents_db[doc_id] ={
-             "id": doc_name,
-            "filename": doc_name,
-            "path": save_path,
-            "upload_time": datetime.utcnow(),
-            "status": "processing"  # will flip to "ready" once Phase 2 chunks it
-        }
-        
+              
         
         return ResponseUploadDocument(id=doc_id, filename= doc_name, status="uploaded")
         
