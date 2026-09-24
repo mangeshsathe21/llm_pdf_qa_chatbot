@@ -1,7 +1,7 @@
 # ==========================================
 # Backend (FastAPI / Python / uv)
 # ==========================================
-backend/__pycache__/
+**/__pycache__/
 backend/*.py[cod]
 backend/.venv/
 backend/venv/
