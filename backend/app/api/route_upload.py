@@ -24,7 +24,7 @@ async def upload_document(postfile: UploadFile = File(...)):
             raise HTTPException(400, {"error_details" : f"File format not allowed : {postfile.filename}"})
         
         extension = os.path.splitext(postfile.filename)[1].lower()
-        
+        await postfile.seek(0)
         content = await postfile.read()
         size_mb = len(content) / (1024 * 1024)
         

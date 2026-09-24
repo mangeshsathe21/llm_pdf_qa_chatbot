@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException
 from app.models.schemas import ResponseAsk, ResponseAskInformation, ResponseDocumentList
 import os
 from app.config import settings
+from time import time
 
 
 router = APIRouter()
@@ -15,4 +16,4 @@ def ask(request: ResponseAskInformation):
     if request.documentname not in files:
         raise HTTPException(400, f"File not found {request.documentname}, check the document if its getting listed in /listdocument API")
     
-    return {"documentname" : request.documentname, "documentask" : request.documentask, "llmresponse": "LLM Response"}
+    return {"documentname" : request.documentname, "documentask" : request.documentask, "llmresponse": "LLM Response" + str(time())}
